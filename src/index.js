@@ -1,8 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+export { default as slimPickens } from './decorate'
+export { default as SlimPickens } from './SlimPickens'
+export { default as SlimProto } from './SlimProto'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { SlimPickens } from 'slim-pickens';
 import './App.css';
-import SlimPickens from './SlimPickens';
 
 class App extends Component {
   render() {
