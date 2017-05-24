@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { allDates } from './calendarData'
 import range from './lib/range'
 
-export default class extends Component {
+export default class SlimProto extends Component {
   state = {
     month: 5,
     year: 2017
@@ -28,24 +28,19 @@ export default class extends Component {
     })
   }
 
-  render() {
+  rows() {
     const { month, year } = this.state
     const { buckets } = allDates(month, year)
     const rowCount = Math.ceil(buckets.length / 7)
-    const rows = range(1, rowCount).map(n => {
+
+    return range(1, rowCount).map(n => {
       const start = 7 * (n - 1)
 
       return {
         columns: buckets.slice(start, start + 7)
       }
     })
-
-    return React.cloneElement(this.props.children, {
-      ...this.state,
-      rows,
-      previousMonth: this.previousMonth,
-      nextMonth: this.nextMonth
-    })
   }
 }
+
 

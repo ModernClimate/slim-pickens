@@ -1,9 +1,9 @@
 import React from 'react'
-import CalendarContainer from './CalendarContainer'
+import SlimContainer from './SlimContainer'
 
 export default Component => () => (
-  <CalendarContainer>
+  <SlimContainer>
     <Component />
-  </CalendarContainer>
+  </SlimContainer>
 )
 
