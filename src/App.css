@@ -32,6 +32,6 @@
         right: 1rem; }
   .calendar table {
     width: 100%; }
-    .calendar table td:hover {
+    .calendar table td.date:hover {
       background-color: #dedede;
       cursor: pointer; }

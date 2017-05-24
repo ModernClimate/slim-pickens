@@ -2,10 +2,12 @@ import { Component } from 'react'
 import { allDates } from './calendarData'
 import range from './lib/range'
 
+const today = new Date()
+
 export default class SlimProto extends Component {
   state = {
-    month: 5,
-    year: 2017
+    month: today.getMonth() + 1,
+    year: today.getFullYear()
   }
 
   previousMonth = () => {

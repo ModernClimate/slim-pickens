@@ -1,9 +1,9 @@
 import React from 'react'
 import SlimContainer from './SlimContainer'
 
-export default Component => () => (
+export default Component => props => (
   <SlimContainer>
-    <Component />
+    <Component {...props} />
   </SlimContainer>
 )
 

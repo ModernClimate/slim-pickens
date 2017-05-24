@@ -1,23 +1,21 @@
 import React from 'react'
 import slimPickens from './decorate'
 
-function renderDate(date, i) {
-  return (
-    <td key={i}>
+function renderRow(onPick) {
+  const renderDate = (date, i) => (
+    <td key={i} className={date && 'date'} onClick={() => date && onPick(date)}>
       {date && date.getDate()}
     </td>
   )
-}
 
-function renderRow(row, i) {
-  return (
+  return (row, i) => (
     <tr key={`row-${i}`}>
       {row.columns.map(renderDate)}
     </tr>
   )
 }
 
-export function SlimPickens({ month, year, previousMonth, nextMonth, rows }) {
+export function SlimPickens({ month, year, previousMonth, nextMonth, rows, onPick = () => {} }) {
   return (
     <div className="calendar">
       <h2>
@@ -42,7 +40,7 @@ export function SlimPickens({ month, year, previousMonth, nextMonth, rows }) {
           </tr>
         </thead>
         <tbody>
-          {rows.map(renderRow)}
+          {rows.map(renderRow(onPick))}
         </tbody>
       </table>
     </div>
