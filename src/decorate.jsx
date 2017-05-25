@@ -2,7 +2,7 @@ import React from 'react'
 import SlimContainer from './SlimContainer'
 
 export default Component => props => (
-  <SlimContainer>
+  <SlimContainer {...props}>
     <Component {...props} />
   </SlimContainer>
 )

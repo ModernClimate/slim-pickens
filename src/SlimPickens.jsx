@@ -1,9 +1,26 @@
 import React from 'react'
 import slimPickens from './decorate'
 
-function renderRow(onPick) {
+function classNames(map) {
+  return Object.keys(map).reduce((classes, c) => {
+    if (map[c]) {
+      return classes.concat(c)
+    }
+
+    return classes
+  }, []).join(' ')
+}
+
+function renderRow(onPick, selected) {
   const renderDate = (date, i) => (
-    <td key={i} className={date && 'date'} onClick={() => date && onPick(date)}>
+    <td
+      key={i}
+      className={classNames({
+        date,
+        selected: date && selected && date.getTime() === selected.getTime()
+      })}
+      onClick={() => date && onPick(date)}
+    >
       {date && date.getDate()}
     </td>
   )
@@ -15,7 +32,17 @@ function renderRow(onPick) {
   )
 }
 
-export function SlimPickens({ month, year, previousMonth, nextMonth, rows, onPick = () => {} }) {
+export function SlimPickens({
+  selected = new Date(new Date().setHours(0, 0, 0, 0)),
+  month,
+  year,
+  previousMonth,
+  nextMonth,
+  rows,
+  onPick = () => {}
+}) {
+  const row = renderRow(onPick, selected)
+
   return (
     <div className="calendar">
       <h2>
@@ -40,7 +67,7 @@ export function SlimPickens({ month, year, previousMonth, nextMonth, rows, onPic
           </tr>
         </thead>
         <tbody>
-          {rows.map(renderRow(onPick))}
+          {rows.map(row)}
         </tbody>
       </table>
     </div>

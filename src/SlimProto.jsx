@@ -2,12 +2,22 @@ import { Component } from 'react'
 import { allDates } from './calendarData'
 import range from './lib/range'
 
-const today = new Date()
+function startDate({ selected }) {
+  const date = Date.parse(selected) && new Date(selected) || new Date()
+
+  return {
+    month: date.getMonth() + 1,
+    year: date.getFullYear()
+  }
+}
 
 export default class SlimProto extends Component {
-  state = {
-    month: today.getMonth() + 1,
-    year: today.getFullYear()
+  state = startDate(this.props)
+
+  componentWillUpdate(nextProps) {
+    if (this.props.selected !== nextProps.selected) {
+      this.setState(startDate(nextProps));
+    }
   }
 
   previousMonth = () => {

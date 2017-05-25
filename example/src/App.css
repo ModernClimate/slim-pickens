@@ -35,3 +35,5 @@
     .calendar table td.date:hover {
       background-color: #dedede;
       cursor: pointer; }
+    .calendar table td.date.selected {
+      background-color: #ababab; }

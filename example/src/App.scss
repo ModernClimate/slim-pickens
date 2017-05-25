@@ -45,9 +45,15 @@
   table {
     width: 100%;
 
-    td.date:hover {
-      background-color: #dedede;
-      cursor: pointer;
+    td.date {
+      &:hover {
+        background-color: #dedede;
+        cursor: pointer;
+      }
+
+      &.selected {
+        background-color: #ababab;
+      }
     }
   }
 }

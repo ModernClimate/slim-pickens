@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { SlimPickens } from 'slim-pickens';
+import { SlimPickens } from '@ackmann-dickenson/slim-pickens';
 import './App.css';
 
 class App extends Component {
+  state = {
+    selected: new Date('4/20/2017')
+  }
+
+  select = selected => this.setState({ selected })
+
   render() {
     return (
       <div className="App">
@@ -11,7 +17,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <SlimPickens onPick={date => console.log(date)} />
+        <SlimPickens onPick={this.select} selected={this.state.selected} />
       </div>
     );
   }

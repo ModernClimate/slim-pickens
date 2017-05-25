@@ -1,7 +1,6 @@
 {
-  "name": "slim-pickens",
+  "name": "@ackmann-dickenson/slim-pickens",
   "version": "0.1.0",
-  "private": true,
   "main": "lib/index",
   "dependencies": {},
   "peerDependencies": {
