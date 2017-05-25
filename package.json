@@ -18,5 +18,9 @@
   },
   "scripts": {
     "compile": "babel -d lib/ src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ackmann-dickenson/slim-pickens.git"
   }
 }
