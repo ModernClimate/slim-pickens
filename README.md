@@ -158,7 +158,7 @@ You can also inherit from the `SlimProto` component. Doing this gives you the sa
 decorator does, but not as component props:
 
 Name | Path | Description
----|:---
+---|:---:|:---
 month | this.state.month | Calendar month (1-12)
 year | this.state.year | Calendar year (YYYY)
 previousMonth | this.previousMonth() | Function to go to the previous month
