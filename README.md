@@ -31,7 +31,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    selected: new Date('4/20/2016')
+    selected: '4/20/2016'
   }
 
   select = selected => this.setState({ selected })
@@ -43,7 +43,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <SlimPickens onPick={this.select} selected={this.state.selected} />
+        <SlimPickens onPick={this.select} value={this.state.selected} />
       </div>
     );
   }
@@ -51,6 +51,13 @@ class App extends Component {
 
 export default App;
 ```
+
+The `SlimPickens` component accepts the following props:
+
+Property Name | Type | Description
+---|:---:|:---
+value | `String &#124; Date` | The initially selected date. Can be a date object or a parsable date string.
+onPick | `Function(date)` | Called with the chosen date when selected.
 
 ### Custom Components
 
@@ -61,106 +68,34 @@ If you don't like ours, build your own! You can use decorators or inheritance, t
 Just decorate it with the `slimPickens` decorator and
 it will inject all the properties you need:
 
-
-Property Name | Description
+Property Name | Type | Description
 ---|:---
-month | Calendar month (1-12)
-year | Calendar year (YYYY)
-previousMonth | Function to go to the previous month
-nextMonth | Function to go to the next month
-rows | Contains the data to fill each cell in the calendar for the current month and year
-
-In fact, the `SlimPickens` premade component is written with this decorator:
+month | `Integer` | Calendar month (1-12)
+year | `Integer` | Calendar year (YYYY)
+previousMonth | `Function` | Decrement the calendar month
+nextMonth | `Function` | Increment the calendar month
+rows | `Array<Columns>` | Row & column data containing date objects to populate the cells of the calendar
+selected | `Date` | The currently selected date
 
 ```javascript
-import React from 'react'
-import slimPickens from './decorate'
-
-function classNames(map) {
-  return Object.keys(map).reduce((classes, c) => {
-    if (map[c]) {
-      return classes.concat(c)
-    }
-
-    return classes
-  }, []).join(' ')
-}
-
-function renderRow(onPick, selected) {
-  const renderDate = (date, i) => (
-    <td
-      key={i}
-      className={classNames({
-        date,
-        selected: date && selected && date.getTime() === selected.getTime()
-      })}
-      onClick={() => date && onPick(date)}
-    >
-      {date && date.getDate()}
-    </td>
-  )
-
-  return (row, i) => (
-    <tr key={`row-${i}`}>
-      {row.columns.map(renderDate)}
-    </tr>
-  )
-}
-
-export function SlimPickens({
-  selected = new Date(new Date().setHours(0, 0, 0, 0)),
-  month,
-  year,
-  previousMonth,
-  nextMonth,
-  rows,
-  onPick = () => {}
-}) {
-  const row = renderRow(onPick, selected)
-
+export function MyCalendarComponent({ month, year, previousMonth, nextMonth, rows, selected }) {
   return (
-    <div className="calendar">
-      <h2>
-        <button type="button" onClick={previousMonth}>
-          &lt;
-        </button>
-        {month} / {year}
-        <button type="button" onClick={nextMonth}>
-          &gt;
-        </button>
-      </h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Su</th>
-            <th>Mo</th>
-            <th>Tu</th>
-            <th>We</th>
-            <th>Th</th>
-            <th>Fr</th>
-            <th>Sa</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(row)}
-        </tbody>
-      </table>
-    </div>
+    <table>
+      ...
+    </table>
   )
 }
 
-export default slimPickens(SlimPickens)
+export default slimPickens(MyCalendarComponent)
 ```
+
+In fact, the `SlimPickens` premade component is written with this decorator. We invite you to look at the
+source for inspiration!
 
 #### Inheritance
 
-You can also inherit from the `SlimProto` component. Doing this gives you the same stuff as the
-decorator does, but not as component props:
+You can also inherit from the `SlimProto` component. This offers essentially the same interface as the decorator,
+with some minor differences:
 
-Name | Path | Description
----|:---:|:---
-month | this.state.month | Calendar month (1-12)
-year | this.state.year | Calendar year (YYYY)
-previousMonth | this.previousMonth() | Function to go to the previous month
-nextMonth | this.nextMonth() | Function to go to the next month
-rows | this.rows() | Contains the data to fill each cell in the calendar for the current month and year
+1. `month` and `year` will be members of `this.state`
+2. `previousMonth` and `nextMonth`, `rows`, and `selected` will all be component methods

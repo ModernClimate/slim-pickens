@@ -3,6 +3,8 @@
   "version": "0.2.0",
   "main": "lib/index",
   "dependencies": {},
+  "author": "Ackmann & Dickenson",
+  "licence": "MIT",
   "peerDependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4"

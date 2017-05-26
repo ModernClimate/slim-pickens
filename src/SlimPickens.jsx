@@ -17,7 +17,7 @@ function renderRow(onPick, selected) {
       key={i}
       className={classNames({
         date,
-        selected: date && selected && date.getTime() === selected.getTime()
+        selected: date && date.getTime() === selected.getTime()
       })}
       onClick={() => date && onPick(date)}
     >
@@ -33,7 +33,7 @@ function renderRow(onPick, selected) {
 }
 
 export function SlimPickens({
-  selected = new Date(new Date().setHours(0, 0, 0, 0)),
+  selected,
   month,
   year,
   previousMonth,
