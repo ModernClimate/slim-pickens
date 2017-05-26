@@ -6,6 +6,7 @@ export default class SlimContainer extends SlimProto {
     return React.cloneElement(this.props.children, {
       ...this.state,
       rows: this.rows(),
+      selected: this.selected(),
       previousMonth: this.previousMonth,
       nextMonth: this.nextMonth
     })

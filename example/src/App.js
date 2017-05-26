@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    selected: new Date('4/20/2017')
+    selected: '4/20/2017'
   }
 
   select = selected => this.setState({ selected })
@@ -17,7 +17,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <SlimPickens onPick={this.select} selected={this.state.selected} />
+        <center>
+          <SlimPickens onPick={this.select} value={this.state.selected} />
+        </center>
       </div>
     );
   }
