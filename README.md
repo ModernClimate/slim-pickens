@@ -63,7 +63,7 @@ The `SlimPickens` component accepts the following props:
 Property Name | Type | Description
 ---|:---:|:---
 value | String &#124; Date | The initially selected date. Can be a date object or a parsable date string.
-onPick | Function(date) | Called with the chosen date when selected.
+onPick | Function(Date) | Called with the chosen date when selected.
 
 ### Custom Components
 
