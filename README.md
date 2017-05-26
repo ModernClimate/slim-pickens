@@ -1,6 +1,12 @@
+[![npm](https://img.shields.io/npm/v/@ackmann-dickenson/slim-pickens.svg?style=plastic)](https://www.npmjs.com/package/@ackmann-dickenson/slim-pickens)
+
 # slim-pickens
 
 A lightweight date picker utility for React. Use our components or easily roll your own. Read on.
+
+## Demo
+
+http://outrageous-show.surge.sh/
 
 ## Installation
 
