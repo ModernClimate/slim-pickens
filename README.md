@@ -56,8 +56,8 @@ The `SlimPickens` component accepts the following props:
 
 Property Name | Type | Description
 ---|:---:|:---
-value | `String &#124; Date` | The initially selected date. Can be a date object or a parsable date string.
-onPick | `Function(date)` | Called with the chosen date when selected.
+value | String &#124; Date | The initially selected date. Can be a date object or a parsable date string.
+onPick | Function(date) | Called with the chosen date when selected.
 
 ### Custom Components
 
@@ -69,13 +69,13 @@ Just decorate it with the `slimPickens` decorator and
 it will inject all the properties you need:
 
 Property Name | Type | Description
----|:---
-month | `Integer` | Calendar month (1-12)
-year | `Integer` | Calendar year (YYYY)
-previousMonth | `Function` | Decrement the calendar month
-nextMonth | `Function` | Increment the calendar month
-rows | `Array<Columns>` | Row & column data containing date objects to populate the cells of the calendar
-selected | `Date` | The currently selected date
+---|:---|:---
+month | Integer | Calendar month (1-12)
+year | Integer | Calendar year (YYYY)
+previousMonth | Function | Decrement the calendar month
+nextMonth | Function | Increment the calendar month
+rows | Array&lt;Columns&gt; | Row & column data containing date objects to populate the cells of the calendar
+selected | Date | The currently selected date
 
 ```javascript
 export function MyCalendarComponent({ month, year, previousMonth, nextMonth, rows, selected }) {
@@ -89,8 +89,8 @@ export function MyCalendarComponent({ month, year, previousMonth, nextMonth, row
 export default slimPickens(MyCalendarComponent)
 ```
 
-In fact, the `SlimPickens` premade component is written with this decorator. We invite you to look at the
-source for inspiration!
+In fact, the `SlimPickens` premade component is written with this decorator. We invite you to [look at the
+source](https://github.com/ackmann-dickenson/slim-pickens/blob/master/src/SlimPickens.jsx) for inspiration!
 
 #### Inheritance
 
