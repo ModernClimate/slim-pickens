@@ -1,15 +1,6 @@
 import React from 'react'
 import slimPickens from './decorate'
-
-function classNames(map) {
-  return Object.keys(map).reduce((classes, c) => {
-    if (map[c]) {
-      return classes.concat(c)
-    }
-
-    return classes
-  }, []).join(' ')
-}
+import classNames from './lib/classNames'
 
 function renderRow(onPick, selected) {
   const renderDate = (date, i) => (

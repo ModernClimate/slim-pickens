@@ -46,6 +46,8 @@
     width: 100%;
 
     td.date {
+      text-align: center;
+
       &:hover {
         background-color: #dedede;
         cursor: pointer;
@@ -55,5 +57,16 @@
         background-color: #ababab;
       }
     }
+  }
+}
+
+.date-input {
+  position: relative;
+
+  .calendar {
+    position: absolute;
+    top: -50px;
+    left: 40%;
+    background-color: orange;
   }
 }

@@ -32,8 +32,18 @@
         right: 1rem; }
   .calendar table {
     width: 100%; }
-    .calendar table td.date:hover {
-      background-color: #dedede;
-      cursor: pointer; }
-    .calendar table td.date.selected {
-      background-color: #ababab; }
+    .calendar table td.date {
+      text-align: center; }
+      .calendar table td.date:hover {
+        background-color: #dedede;
+        cursor: pointer; }
+      .calendar table td.date.selected {
+        background-color: #ababab; }
+
+.date-input {
+  position: relative; }
+  .date-input .calendar {
+    position: absolute;
+    top: -50px;
+    left: 40%;
+    background-color: orange; }
