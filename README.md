@@ -27,15 +27,17 @@ let you easily write your own custom components.
 
 ### Pre-made Components
 
-Look no further than the example app to see how to use our pre-made components:
+We currently feature a simple calendar component as well as a date input, described below.
+
+#### SlimPickens
+
+This is a regular calendar control.
 
 ```javascript
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import { SlimPickens } from '@ackmann-dickenson/slim-pickens';
-import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   state = {
     selected: '4/20/2016'
   }
@@ -44,18 +46,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <SlimPickens onPick={this.select} value={this.state.selected} />
-      </div>
+      <SlimPickens onPick={this.select} value={this.state.selected} />
     );
   }
 }
-
-export default App;
 ```
 
 The `SlimPickens` component accepts the following props:
@@ -64,6 +58,38 @@ Property Name | Type | Description
 ---|:---:|:---
 value | String &#124; Date | The initially selected date. Can be a date object or a parsable date string.
 onPick | Function(Date) | Called with the chosen date when selected.
+
+#### DateInput
+
+An input that opens a calendar control when clicked. Selecting a date closed the calendar and displays the
+selected date value in the input.
+
+```javascript
+import React, { Component } from 'react';
+import { DateInput } from '@ackmann-dickenson/slim-pickens';
+
+export default class App extends Component {
+  state = {
+    selected: '4/20/2016'
+  }
+
+  select = selected => this.setState({ selected })
+
+  render() {
+    return (
+      <DateInput onPick={this.select} value={this.state.selected} />
+    );
+  }
+}
+```
+
+The `DateInput` component accepts the same props as `SlimPickens`, as well as an optional `format` prop.
+
+Property Name | Type | Description
+---|:---:|:---
+value | String &#124; Date | The initially selected date. Can be a date object or a parsable date string.
+onPick | Function(Date) | Called with the chosen date when selected.
+format | Function(Date) | Determines how to display the date in the input. Defaults to ` date => date.toLocaleString()`.
 
 ### Custom Components
 
@@ -80,6 +106,8 @@ month | Integer | Calendar month (1-12)
 year | Integer | Calendar year (YYYY)
 previousMonth | Function | Decrement the calendar month
 nextMonth | Function | Increment the calendar month
+previousYear | Function | Decrement the calendar year
+nextYear | Function | Increment the calendar year
 rows | Array&lt;Columns&gt; | Row & column data containing date objects to populate the cells of the calendar
 selected | Date | The currently selected date
 
@@ -104,4 +132,4 @@ You can also inherit from the `SlimProto` component. This offers essentially the
 with some minor differences:
 
 1. `month` and `year` will be members of `this.state`
-2. `previousMonth` and `nextMonth`, `rows`, and `selected` will all be component methods
+2. `previousMonth` and `nextMonth`, `previousYear`, `nextYear`, `rows`, and `selected` will all be component methods

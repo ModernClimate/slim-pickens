@@ -22,14 +22,16 @@
 
 .calendar {
   width: 25%; }
-  .calendar h2 {
-    position: relative; }
-    .calendar h2 button {
-      position: absolute; }
-      .calendar h2 button:first-child {
-        left: 1rem; }
-      .calendar h2 button:last-child {
-        right: 1rem; }
+  .calendar .calendar-control {
+    width: 50%;
+    position: relative;
+    display: inline; }
+    .calendar .calendar-control button {
+      vertical-align: middle; }
+      .calendar .calendar-control button:first-child {
+        margin-right: 20px; }
+      .calendar .calendar-control button:last-child {
+        margin-left: 20px; }
   .calendar table {
     width: 100%; }
     .calendar table td.date {

@@ -26,18 +26,20 @@
 .calendar {
   width: 25%;
 
-  h2 {
+  .calendar-control {
+    width: 50%;
     position: relative;
+    display: inline;
 
     button {
-      position: absolute;
+      vertical-align: middle;
 
       &:first-child {
-        left: 1rem;
+        margin-right: 20px;
       }
 
       &:last-child {
-        right: 1rem;
+        margin-left: 20px;
       }
     }
   }

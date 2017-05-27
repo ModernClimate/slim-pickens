@@ -29,6 +29,8 @@ export function SlimPickens({
   year,
   previousMonth,
   nextMonth,
+  previousYear,
+  nextYear,
   rows,
   onPick = () => {}
 }) {
@@ -37,13 +39,29 @@ export function SlimPickens({
   return (
     <div className="calendar">
       <h2>
-        <button type="button" onClick={previousMonth}>
-          &lt;
-        </button>
-        {month} / {year}
-        <button type="button" onClick={nextMonth}>
-          &gt;
-        </button>
+        <div className="calendar-control">
+          <button type="button" onClick={previousMonth}>
+            &lt;
+          </button>
+          <span>
+            {month}
+          </span>
+          <button type="button" onClick={nextMonth}>
+            &gt;
+          </button>
+        </div>
+        <span> / </span>
+        <div className="calendar-control">
+          <button type="button" onClick={previousYear}>
+            &lt;
+          </button>
+          <span>
+            {year}
+          </span>
+          <button type="button" onClick={nextYear}>
+            &gt;
+          </button>
+        </div>
       </h2>
       <table>
         <thead>

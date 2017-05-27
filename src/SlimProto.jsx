@@ -26,6 +26,14 @@ export default class SlimProto extends Component {
     }
   }
 
+  previousYear = () => {
+    this.setState(({ year }) => ({ year: year - 1 }))
+  }
+
+  nextYear = () => {
+    this.setState(({ year }) => ({ year: year + 1 }))
+  }
+
   previousMonth = () => {
     this.setState(({ month, year }) => {
       if (month === 1) {

@@ -8,7 +8,9 @@ export default class SlimContainer extends SlimProto {
       rows: this.rows(),
       selected: this.selected(),
       previousMonth: this.previousMonth,
-      nextMonth: this.nextMonth
+      nextMonth: this.nextMonth,
+      previousYear: this.previousYear,
+      nextYear: this.nextYear
     })
   }
 }
