@@ -1,4 +1,5 @@
 [![npm](https://img.shields.io/npm/v/@ackmann-dickenson/slim-pickens.svg?style=plastic)](https://www.npmjs.com/package/@ackmann-dickenson/slim-pickens)
+[![Travis branch](https://img.shields.io/travis/ackmann-dickenson/slim-pickens/slim-pickens.svg?style=plastic)](https://travis-ci.org/orange-marmalade/slim-pickens)
 
 # slim-pickens
 
@@ -61,7 +62,7 @@ onPick | Function(Date) | Called with the chosen date when selected.
 
 #### DateInput
 
-An input that opens a calendar control when clicked. Selecting a date closed the calendar and displays the
+An input that opens a calendar control when clicked. Selecting a date closes the calendar and displays the
 selected date value in the input.
 
 ```javascript

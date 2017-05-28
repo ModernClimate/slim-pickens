@@ -71,6 +71,9 @@ export default class SlimProto extends Component {
       }
     })
   }
-}
 
+  render() {
+    return false
+  }
+}
 
