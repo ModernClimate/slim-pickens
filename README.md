@@ -1,5 +1,5 @@
 [![npm](https://img.shields.io/npm/v/@ackmann-dickenson/slim-pickens.svg?style=plastic)](https://www.npmjs.com/package/@ackmann-dickenson/slim-pickens)
-[![Build Status](https://travis-ci.org/ackmann-dickenson/slim-pickens.svg?branch=master)](https://travis-ci.org/ackmann-dickenson/slim-pickens)
+[![Travis](https://img.shields.io/travis/ackmann-dickenson/slim-pickens.svg)](https://github.com/ackmann-dickenson/slim-pickens)
 
 # slim-pickens
 
