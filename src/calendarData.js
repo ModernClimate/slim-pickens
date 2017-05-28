@@ -1,13 +1,15 @@
-import range from './lib/range'
+// @flow
 
-export function allDates(month, year) {
-  const dates = range(1, 31).map(day =>
-    new Date(`${month}/${day}/${year}`)
-  ).filter(date => date.getMonth() === month - 1)
+import range from './lib/range';
 
-  const offset = dates[0].getDay()
+export function allDates(month: number, year: number) {
+  const dates = range(1, 31)
+    .map(day => new Date(`${month}/${day}/${year}`))
+    .filter(date => date.getMonth() === month - 1);
+
+  const offset = dates[0].getDay();
 
   const buckets = Array(offset).fill(null).concat(dates);
 
-  return { dates, buckets, offset }
+  return { dates, buckets, offset };
 }

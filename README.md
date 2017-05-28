@@ -57,8 +57,8 @@ The `SlimPickens` component accepts the following props:
 
 Property Name | Type | Description
 ---|:---:|:---
-value | String &#124; Date | The initially selected date. Can be a date object or a parsable date string.
-onPick | Function(Date) | Called with the chosen date when selected.
+value | string | A parsable date string representing the initially selected date.
+onPick | (date: Date) => void | Called with the chosen date when selected.
 
 #### DateInput
 
@@ -88,9 +88,9 @@ The `DateInput` component accepts the same props as `SlimPickens`, as well as an
 
 Property Name | Type | Description
 ---|:---:|:---
-value | String &#124; Date | The initially selected date. Can be a date object or a parsable date string.
-onPick | Function(Date) | Called with the chosen date when selected.
-format | Function(Date) | Determines how to display the date in the input. Defaults to ` date => date.toLocaleString()`.
+value | string | A parsable date string representing the initially selected date.
+onPick | (date: Date) => void | Called with the chosen date when selected.
+format | (date: Date) => string | Determines how to display the date in the input. Defaults to ` date => date.toLocaleString()`.
 
 ### Custom Components
 
@@ -103,13 +103,13 @@ it will inject all the properties you need:
 
 Property Name | Type | Description
 ---|:---|:---
-month | Integer | Calendar month (1-12)
-year | Integer | Calendar year (YYYY)
-previousMonth | Function | Decrement the calendar month
-nextMonth | Function | Increment the calendar month
-previousYear | Function | Decrement the calendar year
-nextYear | Function | Increment the calendar year
-rows | Array&lt;Columns&gt; | Row & column data containing date objects to populate the cells of the calendar
+month | number | Calendar month (1-12)
+year | number | Calendar year (YYYY)
+previousMonth | () => void | Decrement the calendar month
+nextMonth | () => void | Increment the calendar month
+previousYear | () => void | Decrement the calendar year
+nextYear | () => void | Increment the calendar year
+rows | Array&lt;{ columns: Array&lt;Date&gt; }&gt; | Row & column data containing date objects to populate the cells of the calendar
 selected | Date | The currently selected date
 
 ```javascript
@@ -134,3 +134,71 @@ with some minor differences:
 
 1. `month` and `year` will be members of `this.state`
 2. `previousMonth` and `nextMonth`, `previousYear`, `nextYear`, `rows`, and `selected` will all be component methods
+
+## Contribution
+
+We are happy to accept pull requests. If you want to make one, here are some things you'll want to know.
+
+### Running the example project
+
+You can test your changes with the example project by using linking. Starting at the project root directory:
+
+```
+yarn run compile
+yarn link
+cd example
+yarn install
+yarn link @ackmann-dickenson/slim-pickens
+yarn start
+```
+
+### Type checking with flow
+
+All library files are type checked using flow. If you are creating a new file, add this to the top:
+
+```
+// @flow
+```
+
+This makes sure that type checking will run on your file. Pull requests with files that aren't type checked
+will not be accepted. Type checking can be performed with
+
+```
+yarn run flow
+```
+
+This check will also be performed by Travis CI.
+
+### Testing
+
+The project is tested with `mocha`, `expect`, and `enzyme`. All pull requests should come with test coverage.
+Tests can be run locally with
+
+```
+yarn run spec
+```
+
+### Linting
+
+This project uses eslint to enforce some stylistic rules. The configuration is an extension of airbnb & flow
+recommended settings with some overrides. Perform lint checks locally with:
+
+```
+yarn run lint
+```
+
+### All Checks / Travis CI
+
+You can run all of the above checks by executing
+
+```
+yarn test
+```
+
+This performs checks as follows:
+
+1. `yarn run flow`
+2. `yarn run lint`
+3. `yarn run spec`
+
+This task is executed by Travis CI, so failure to pass any of these checks will cause a build failure.
