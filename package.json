@@ -25,6 +25,7 @@
     "react-test-renderer": "^15.5.4"
   },
   "scripts": {
+    "test": "yarn run spec",
     "spec": "NODE_ENV=test mocha './spec/**/*.spec.js*' --compilers js:babel-register --recursive",
     "compile": "babel -d lib/ src/"
   },
