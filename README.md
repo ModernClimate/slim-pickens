@@ -1,5 +1,5 @@
 [![npm](https://img.shields.io/npm/v/@ackmann-dickenson/slim-pickens.svg?style=plastic)](https://www.npmjs.com/package/@ackmann-dickenson/slim-pickens)
-[![Travis branch](https://img.shields.io/travis/ackmann-dickenson/slim-pickens/slim-pickens.svg?style=plastic)](https://travis-ci.org/orange-marmalade/slim-pickens)
+[![Travis branch](https://img.shields.io/travis/ackmann-dickenson/slim-pickens/slim-pickens.svg?style=plastic)](https://travis-ci.org/ackmann-dickenson/slim-pickens)
 
 # slim-pickens
 
