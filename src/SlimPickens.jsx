@@ -1,8 +1,10 @@
-import React from 'react'
-import slimPickens from './decorate'
-import classNames from './lib/classNames'
+// @flow
 
-function renderRow(onPick, selected) {
+import React from 'react';
+import slimPickens from './decorate';
+import classNames from './lib/classNames';
+
+function renderRow(onPick: (date: Date) => void, selected: Date) {
   const renderDate = (date, i) => (
     <td
       key={i}
@@ -10,55 +12,58 @@ function renderRow(onPick, selected) {
         date,
         selected: date && date.getTime() === selected.getTime()
       })}
-      onClick={() => date && onPick(date)}
     >
-      {date && date.getDate()}
+      <div role="button" tabIndex={0} onClick={() => date && onPick(date)}>
+        {date && date.getDate()}
+      </div>
     </td>
-  )
+  );
 
   return (row, i) => (
     <tr key={`row-${i}`}>
       {row.columns.map(renderDate)}
     </tr>
-  )
+  );
 }
 
-export function SlimPickens({
-  selected,
-  month,
-  year,
-  previousMonth,
-  nextMonth,
-  previousYear,
-  nextYear,
-  rows,
-  onPick = () => {}
-}) {
-  const row = renderRow(onPick, selected)
+export function SlimPickens(
+  props: {
+    selected: Date,
+    month: number,
+    year: number,
+    previousMonth: () => void,
+    nextMonth: () => void,
+    previousYear: () => void,
+    nextYear: () => void,
+    rows: Array<{ columns: Array<Date> }>,
+    onPick: (Date) => void
+  }
+) {
+  const row = renderRow(props.onPick, props.selected);
 
   return (
     <div className="calendar">
       <h2>
         <div className="calendar-control">
-          <button type="button" onClick={previousMonth}>
+          <button type="button" onClick={props.previousMonth}>
             &lt;
           </button>
           <span>
-            {month}
+            {props.month}
           </span>
-          <button type="button" onClick={nextMonth}>
+          <button type="button" onClick={props.nextMonth}>
             &gt;
           </button>
         </div>
         <span> / </span>
         <div className="calendar-control">
-          <button type="button" onClick={previousYear}>
+          <button type="button" onClick={props.previousYear}>
             &lt;
           </button>
           <span>
-            {year}
+            {props.year}
           </span>
-          <button type="button" onClick={nextYear}>
+          <button type="button" onClick={props.nextYear}>
             &gt;
           </button>
         </div>
@@ -76,11 +81,11 @@ export function SlimPickens({
           </tr>
         </thead>
         <tbody>
-          {rows.map(row)}
+          {props.rows.map(row)}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
-export default slimPickens(SlimPickens)
+export default slimPickens(SlimPickens);

@@ -1,8 +1,12 @@
-import React from 'react'
-import SlimProto from './SlimProto'
+// @flow
 
-export default class SlimContainer extends SlimProto {
-  render() {
+import React from 'react';
+import SlimProto from './SlimProto';
+
+type Props = { children: React.Element<*> };
+
+export default class SlimContainer extends SlimProto<Props> {
+  render(): React.Element<*> {
     return React.cloneElement(this.props.children, {
       ...this.state,
       rows: this.rows(),
@@ -11,7 +15,6 @@ export default class SlimContainer extends SlimProto {
       nextMonth: this.nextMonth,
       previousYear: this.previousYear,
       nextYear: this.nextYear
-    })
+    });
   }
 }
-
